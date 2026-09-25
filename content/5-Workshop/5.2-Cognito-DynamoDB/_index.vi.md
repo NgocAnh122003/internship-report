@@ -16,7 +16,7 @@ Trong chương này, chúng ta sẽ tiến hành cấu hình cơ sở dữ liệ
 
 - Tạo một bảng DynamoDB hoàn toàn phi máy chủ (Serverless).
 - Thiết lập khóa chính (Partition Key) tối ưu hóa tốc độ truy vấn theo định danh duy nhất.
-- Kiểm tra trạng thái hoạt động sẵn sàng của cơ sở dữ liệu để kết nối với AWS Lambda.
+- Xác minh dữ liệu thực tế được lưu trữ thành công thông qua giao diện quản trị.
 
 ---
 
@@ -54,8 +54,26 @@ Nhập chính xác các thông số kỹ thuật cho bảng ghi chú như sau:
   <i>Hình 5.2: Khởi tạo thành công bảng NotesTable trên DynamoDB với trạng thái Active</i>
 </p>
 
+#### Bước 5: Xác minh lưu trữ dữ liệu thực tế (Explore Items)
+
+Sau khi ứng dụng hoàn thiện và đi vào hoạt động (ở các bước sau), bạn có thể kiểm tra dữ liệu thực tế do người dùng nhập từ giao diện Web đã được lưu vào bảng này hay chưa.
+
+1. Tại góc trên bên phải của màn hình chi tiết bảng, nhấn nút **Explore table items**.
+2. Kéo xuống khu vực **Items returned**, danh sách các ghi chú sẽ hiển thị đầy đủ[cite: 23].
+
+<p align="center">
+  <img src="/images/5-Workshop/img_A/57.png" width="850" />
+  <br>
+  <i>Hình 5.3: Dữ liệu ghi chú thực tế được lưu trữ thành công trong bảng DynamoDB</i>
+</p>
+
+{{% notice success %}}
+**Tính linh hoạt của NoSQL:**
+Như hình trên, mặc dù ở Bước 2 chúng ta chỉ định nghĩa khóa chính là `id`, DynamoDB vẫn tự động chấp nhận và lưu trữ nguyên vẹn các trường dữ liệu động mới (như `content` và `timestamp`) được đẩy về từ tầng Backend API[cite: 23].
+{{% /notice %}}
+
 ---
 
 ### Bước tiếp theo
 
-Cơ sở dữ liệu NoSQL đã được khởi tạo thành công. Bây giờ chúng ta sẽ chuyển sang **Mục 5.3** để xây dựng tầng xử lý logic Backend với **AWS Lambda** và cấu hình cổng giao tiếp **Amazon API Gateway**.
+Cơ sở dữ liệu NoSQL đã được khởi tạo và sẵn sàng nhận dữ liệu. Bây giờ chúng ta sẽ chuyển sang **Mục 5.3** để xây dựng tầng xử lý logic Backend với **AWS Lambda**, tích hợp giám sát và cấu hình cổng giao tiếp **Amazon API Gateway**.

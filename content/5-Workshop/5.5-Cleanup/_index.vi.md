@@ -93,4 +93,20 @@ Sau khi hoàn thành việc xây dựng, kiểm thử và vận hành hệ thố
   <i>Hình 5.5i: Giao diện xác nhận xóa IAM User github-actions-bot</i>
 </p>
 
----
+#### 6. Dọn dẹp Giám sát & Cảnh báo (CloudWatch & SNS)
+
+Đừng quên xóa các tài nguyên vận hành đã thiết lập ở phần Backend để tránh phát sinh chi phí ngầm.
+
+1. Truy cập **CloudWatch**, vào mục **Dashboards** và xóa bảng điều khiển `CloudNote-Monitor`.
+2. Chuyển sang mục **Alarms**, chọn cảnh báo `NoteHandler-Error-Alarm`, nhấp vào thẻ Actions và nhấn **Delete**.
+3. Truy cập dịch vụ **Amazon SNS**, vào mục **Topics**, chọn topic nhận email cảnh báo của dự án và xóa nó.
+
+#### 7. Dọn dẹp Ngân sách (AWS Budgets)
+
+1. Truy cập giao diện **Billing and Cost Management**, chọn mục **Budgets**.
+2. Chọn ngân sách kiểm soát chi phí đã tạo ở phần 5.1, nhấn **Delete** và xác nhận để gỡ bỏ hoàn toàn cảnh báo tiền bạc.
+
+{{% notice success %}}
+**Hoàn tất Dự án!**
+Chúc mừng bạn đã xuất sắc triển khai thành công một kiến trúc Serverless toàn diện. Từ Frontend tích hợp CI/CD tự động, Backend NoSQL siêu tốc, cho đến hệ thống giám sát, cảnh báo và vận hành đạt tiêu chuẩn doanh nghiệp!
+{{% /notice %}}

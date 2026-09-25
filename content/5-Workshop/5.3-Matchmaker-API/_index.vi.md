@@ -17,6 +17,7 @@ Trong chương này, chúng ta sẽ xây dựng tầng xử lý logic nghiệp v
 - Khởi tạo hàm AWS Lambda xử lý các tác vụ CRUD cho ghi chú.
 - Triển khai mã nguồn Python và cấp quyền IAM Policy an toàn để thao tác trực tiếp với bảng `NotesTable`.
 - Triển khai Amazon API Gateway (HTTP API) và định tuyến kết nối tự động đến hàm Lambda.
+- Tích hợp hệ thống giám sát CloudWatch (Dashboard & Alarms) để theo dõi sức khỏe và cảnh báo lỗi tự động.
 
 ---
 
@@ -78,9 +79,9 @@ def lambda_handler(event, context):
 
 Để Lambda có quyền đọc/ghi vào DynamoDB, ta cần cấp quyền cho Execution Role của nó.
 
-1. Chuyển sang tab **Configuration** $\rightarrow$ chọn **Permissions**.
+1. Chuyển sang tab **Configuration** => chọn **Permissions**.
 2. Nhấp vào đường dẫn tên của Role (ví dụ: `NoteHandler-role-xxxx`) để mở giao diện quản lý IAM.
-3. Trong giao diện IAM Role, nhấn **Add permissions** $\rightarrow$ chọn **Attach policies**.
+3. Trong giao diện IAM Role, nhấn **Add permissions** => chọn **Attach policies**.
 4. Tìm kiếm và chọn chính sách `AmazonDynamoDBFullAccess`, sau đó nhấn **Add permissions**.
 
 <p align="center">
@@ -97,7 +98,7 @@ def lambda_handler(event, context):
    - **API name**: `NoteAPI`
    - **Integrations**: Chọn _Lambda_, trỏ tới vùng Region hiện tại và chọn hàm `NoteHandler`.
 4. Nhấn **Next** để chuyển sang bước _Configure routes_. Tại đây, giữ nguyên hoặc cấu hình phương thức `ANY` cho resource path `/{proxy+}`.
-5. Tiếp tục nhấn **Next** qua các bước cấu hình Stage (để mặc định `$default`) và nhấn **Review and create** $\rightarrow$ **Create**.
+5. Tiếp tục nhấn **Next** qua các bước cấu hình Stage (để mặc định `$default`) và nhấn **Review and create** => **Create**.
 
 <p align="center">
   <img src="/images/5-Workshop/img_A/13.png" width="850" />
@@ -118,7 +119,7 @@ def lambda_handler(event, context):
 Trước khi triển khai Frontend, ta cần đảm bảo Backend đã hoạt động.
 
 1. Sử dụng ứng dụng web Frontend (chạy trên local hoặc S3), nhập URL của API Gateway vào cấu hình.
-2. Thử nhập một đoạn ghi chú (ví dụ: "TOI LA QUAN DANG YEU") và nhấn **Lưu Ghi Chú**.
+2. Thử nhập một đoạn ghi chú và nhấn **Lưu Ghi Chú**.
 3. Nếu ứng dụng hiển thị danh sách ghi chú thành công, chứng tỏ luồng `Frontend -> API Gateway -> Lambda -> DynamoDB` đã hoàn toàn thông suốt.
 
 <p align="center">
@@ -129,6 +130,40 @@ Trước khi triển khai Frontend, ta cần đảm bảo Backend đã hoạt đ
 
 ---
 
+#### Bước 6: Thiết lập Giám sát & Cảnh báo (Monitoring & Operations)
+
+Thay vì cấu hình xong rồi để đó, một hệ thống Operations chủ động đã được tích hợp để theo dõi sức khỏe API.
+
+**1. Giám sát Hiệu suất (CloudWatch Dashboard)**
+
+Một bảng điều khiển tập trung được thiết kế để theo dõi các chỉ số sinh tử theo thời gian thực:
+
+- **Lưu lượng & Độ trễ:** Số lần gọi hàm (`Invocations`) và Thời gian thực thi (`Duration`) của Lambda.
+- **Công suất CSDL:** Lượng đơn vị đọc/ghi (`ConsumedReadCapacityUnits`, `ConsumedWriteCapacityUnits`) của DynamoDB.
+
+<p align="center">
+  <img src="/images/5-Workshop/img_A/53.png" width="850" />
+  <br>
+  <i>Hình 5.3g: Bảng điều khiển CloudWatch giám sát Backend</i>
+</p>
+
+**2. Hệ thống Cảnh báo (CloudWatch Alarms)**
+
+Để ngăn chặn tình trạng lỗi hệ thống không được phát hiện, một cơ chế cảnh báo tự động đã được kích hoạt.
+
+<p align="center">
+  <img src="/images/5-Workshop/img_A/56.png" width="850" />
+  <br>
+  <i>Hình 5.3h: Cảnh báo tự động khi hàm Lambda phát sinh lỗi</i>
+</p>
+
+{{% notice info %}}
+**DevOps Best Practice:**
+Cảnh báo `NoteHandler-Error-Alarm` được cấu hình để theo dõi chỉ số `Errors`. Nếu có bất kỳ lỗi nào phát sinh từ Backend (ví dụ do code lỗi hoặc DynamoDB quá tải) liên tục trong 5 phút, hệ thống sẽ lập tức bắn email thông báo qua Amazon SNS cho đội ngũ vận hành.
+{{% /notice %}}
+
+---
+
 ### Bước tiếp theo
 
-Backend xử lý và cổng API đã hoàn tất an toàn. Bây giờ chúng ta chuyển sang **Mục 5.4** để triển khai giao diện lên **Amazon S3** và thiết lập luồng tự động hóa GitOps CI/CD với GitHub Actions.
+Backend xử lý và cổng API đã hoàn tất an toàn cùng với hệ thống giám sát. Bây giờ chúng ta chuyển sang **Mục 5.4** để triển khai giao diện lên **Amazon S3** và thiết lập luồng tự động hóa GitOps CI/CD với GitHub Actions.

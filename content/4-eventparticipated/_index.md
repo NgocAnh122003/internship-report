@@ -28,15 +28,3 @@ Below is a summary of the activities attended:
   <br>
   <i>Figure 4.1: Overview of the centralized meetup and thematic discussion session with the FCAJ community</i>
 </p>
-
-<p align="center">
-  <img src="/images/4-eventparticipated/b.JPG" width="850" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
-  <br>
-  <i>Figure 4.2: Group photo capturing members participating in the Workforce Bootcamp program</i>
-</p>
-
-<p align="center">
-  <img src="/images/4-eventparticipated/c.JPG" width="850" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
-  <br>
-  <i>Figure 4.3: Hands-on lab environment and practical technical exchanges during the offline event</i>
-</p>

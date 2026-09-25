@@ -10,14 +10,14 @@ aliases:
 
 # 5.5. Resource Clean-up
 
-After completing the construction, testing, and operation of the Serverless system, to comply with AWS Best Practices for cost optimization and resource lifecycle management, we perform the resource cleanup steps.
+After successfully building, testing, and operating the Serverless system, we must perform system clean-up to comply with Cloud Best Practices regarding cost optimization and resource lifecycle management.
 
 ### Clean-up Steps
 
 #### 1. Delete Amazon S3 Bucket
 
-1. Access the **Amazon S3** service on the AWS Console to review the bucket list.
-2. Select the bucket `cloud-note-app-ngocanh-2026`. Because the bucket contains static files, AWS displays a protective warning `This bucket is not empty` requiring data clearance before deletion.
+1. Navigate to the **Amazon S3** service on the AWS Console to view the bucket list.
+2. Select the bucket `cloud-note-app-ngocanh-2026`. Because the bucket contains static files, AWS will display a protection warning `This bucket is not empty`, requiring you to empty the data before deletion.
 
 <p align="center">
   <img src="/images/5-Workshop/img_A/40.png" width="850" />
@@ -28,58 +28,58 @@ After completing the construction, testing, and operation of the Serverless syst
 <p align="center">
   <img src="/images/5-Workshop/img_A/41.png" width="850" />
   <br>
-  <i>Figure 5.5b: Selecting the S3 bucket for cleanup</i>
+  <i>Figure 5.5b: Selecting the S3 bucket to clean up</i>
 </p>
 
 <p align="center">
   <img src="/images/5-Workshop/img_A/42.png" width="850" />
   <br>
-  <i>Figure 5.5c: Data protection warning when the bucket is not empty</i>
+  <i>Figure 5.5c: Data protection warning for non-empty buckets</i>
 </p>
 
 #### 2. Delete AWS Lambda Function
 
-1. Access the **AWS Lambda** service to check the list of functions.
-2. Select the `NoteHandler` function and execute the **Delete function** command. Enter the confirmation keyword `confirm` to finalize the deletion request.
+1. Navigate to the **AWS Lambda** service and check the functions list.
+2. Select the `NoteHandler` function and click **Delete function**. Enter the confirmation keyword `confirm` to finalize the deletion.
 
 <p align="center">
   <img src="/images/5-Workshop/img_A/43.png" width="850" />
   <br>
-  <i>Figure 5.5d: List of AWS Lambda Functions</i>
+  <i>Figure 5.5d: AWS Lambda Functions list</i>
 </p>
 
 <p align="center">
   <img src="/images/5-Workshop/img_A/44.png" width="850" />
   <br>
-  <i>Figure 5.5e: Confirmation interface for deleting Lambda function NoteHandler</i>
+  <i>Figure 5.5e: Confirmation interface for deleting the NoteHandler Lambda function</i>
 </p>
 
 #### 3. Delete Amazon API Gateway
 
-1. Access the **Amazon API Gateway** service, select the HTTP API named `NoteAPI`.
-2. Open the API deletion option and enter the confirmation keyword `confirm` into the input field.
+1. Navigate to the **Amazon API Gateway** service and select the HTTP API named `NoteAPI`.
+2. Open the API deletion option and enter the confirmation keyword `confirm` into the text box.
 
 <p align="center">
   <img src="/images/5-Workshop/img_A/45.png" width="850" />
   <br>
-  <i>Figure 5.5f: Confirmation interface for deleting HTTP API NoteAPI</i>
+  <i>Figure 5.5f: Confirmation interface for deleting the NoteAPI HTTP API</i>
 </p>
 
 #### 4. Delete Amazon DynamoDB Table
 
-1. Access the **DynamoDB** service, select **Tables**.
-2. Select the `NotesTable` table, click **Delete**, and enter confirmation `confirm` to delete the table and its data.
+1. Navigate to the **DynamoDB** service and select the **Tables** section.
+2. Choose the `NotesTable` table, click **Delete**, and enter `confirm` to delete the table along with its data.
 
 <p align="center">
   <img src="/images/5-Workshop/img_A/46.png" width="850" />
   <br>
-  <i>Figure 5.5g: Confirmation interface for deleting DynamoDB table NotesTable</i>
+  <i>Figure 5.5g: Confirmation interface for deleting the DynamoDB NotesTable</i>
 </p>
 
 #### 5. Delete CI/CD IAM User
 
-1. Access the **IAM** service, select **Users** to manage identity accounts.
-2. Select the `github-actions-bot` user, click **Delete user**, and enter confirmation `confirm` to revoke GitHub Actions access permissions.
+1. Navigate to the **IAM** service and select the **Users** section to manage identities.
+2. Select the `github-actions-bot` user, click **Delete user**, and enter `confirm` to revoke GitHub Actions access.
 
 <p align="center">
   <img src="/images/5-Workshop/img_A/48.png" width="850" />
@@ -90,7 +90,23 @@ After completing the construction, testing, and operation of the Serverless syst
 <p align="center">
   <img src="/images/5-Workshop/img_A/47.png" width="850" />
   <br>
-  <i>Figure 5.5i: Confirmation interface for deleting IAM User github-actions-bot</i>
+  <i>Figure 5.5i: Confirmation interface for deleting the github-actions-bot IAM User</i>
 </p>
 
----
+#### 6. Clean up Monitoring & Alerts (CloudWatch & SNS)
+
+Do not forget to delete the operational resources configured in the Backend section to avoid hidden costs.
+
+1. Navigate to **CloudWatch**, go to **Dashboards**, and delete the `CloudNote-Monitor` dashboard.
+2. Switch to **Alarms**, select the `NoteHandler-Error-Alarm`, click the Actions dropdown, and press **Delete**.
+3. Navigate to the **Amazon SNS** service, go to **Topics**, select the alert email topic created for the project, and delete it.
+
+#### 7. Clean up AWS Budgets
+
+1. Navigate to the **Billing and Cost Management** console, then select **Budgets**.
+2. Choose the cost control budget created in section 5.1, click **Delete**, and confirm to completely remove the financial alert.
+
+{{% notice success %}}
+**Project Completed!**
+Congratulations on successfully deploying a comprehensive Serverless architecture. From an automated CI/CD Frontend and a high-speed NoSQL Backend to enterprise-standard monitoring, alerting, and operations systems!
+{{% /notice %}}

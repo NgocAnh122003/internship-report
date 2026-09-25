@@ -27,15 +27,3 @@ Dưới đây là tổng kết về các hoạt động đã tham gia:
     <br>
     <i>Hình 4.1: Toàn cảnh buổi sinh hoạt tập trung và thảo luận chuyên đề cùng cộng đồng FCAJ</i>
   </p>
-
-<p align="center">
-  <img src="/images/4-eventparticipated/b.JPG" width="850" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
-  <br>
-  <i>Hình 4.2: Khoảnh khắc lưu niệm tập thể các thành viên tham gia chương trình Workforce Bootcamp</i>
-</p>
-
-<p align="center">
-  <img src="/images/4-eventparticipated/c.JPG" width="850" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
-  <br>
-  <i>Hình 4.3: Không gian thực hành lab và trao đổi kỹ thuật thực tế tại sự kiện offline</i>
-</p>

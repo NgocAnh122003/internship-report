@@ -68,20 +68,18 @@ Trong chương này, chúng ta sẽ biến một kho lưu trữ **Amazon S3** th
 </p>
 
 2. Quay lại tab **Properties**, cuộn xuống mục **Static website hosting** và nhấp vào đường dẫn **Bucket website endpoint**.
-
-<p align="center">
-  <img src="/images/5-Workshop/img_A/25.png" width="850" />
-  <br>
-  <i>Hình 5.4d: Lấy đường dẫn Endpoint tĩnh của Amazon S3</i>
-</p>
-
 3. Trình duyệt sẽ mở ra giao diện ứng dụng quản lý ghi chú. Lúc này, trang web đã chính thức được public trên Internet!
 
 <p align="center">
-  <img src="/images/5-Workshop/img_A/26.png" width="850" />
+  <img src="/images/5-Workshop/img_A/58.png" width="850" />
   <br>
-  <i>Hình 5.4e: Website Cloud Note App hoạt động thành công trên Amazon S3</i>
+  <i>Hình 5.4d: Website Cloud Note App phong cách Modern Minimalist hoạt động thành công trên Amazon S3</i>
 </p>
+
+{{% notice info %}}
+**Tối ưu hóa Trải nghiệm:**
+Giao diện ứng dụng được thiết kế theo phong cách hiện đại, tối giản. Các thao tác Thêm/Xóa đều gọi trực tiếp qua API Gateway đến Serverless Backend, mang lại tốc độ phản hồi gần như tức thời.
+{{% /notice %}}
 
 #### Bước 4: Thiết lập GitHub Repository cho quy trình GitOps
 
@@ -93,7 +91,7 @@ Trong chương này, chúng ta sẽ biến một kho lưu trữ **Amazon S3** th
 <p align="center">
   <img src="/images/5-Workshop/img_A/29.png" width="850" />
   <br>
-  <i>Hình 5.4f: Khởi tạo Repository cloud-note-app trên nền tảng GitHub</i>
+  <i>Hình 5.4e: Khởi tạo Repository cloud-note-app trên nền tảng GitHub</i>
 </p>
 
 3. Tải tệp tin `index.html` của bạn lên repository này (Commit changes).
@@ -101,26 +99,22 @@ Trong chương này, chúng ta sẽ biến một kho lưu trữ **Amazon S3** th
 <p align="center">
   <img src="/images/5-Workshop/img_A/28.png" width="850" />
   <br>
-  <i>Hình 5.4g: Đẩy mã nguồn giao diện lên GitHub Repository</i>
+  <i>Hình 5.4f: Đẩy mã nguồn giao diện lên GitHub Repository</i>
 </p>
 
 ---
-
-### Bước tiếp theo
-
-Việc Hosting tĩnh đã hoạt động tốt, và mã nguồn đã được đưa lên GitHub. Ở phần tiếp theo, chúng ta sẽ tạo user IAM lấy Access Key và cấu hình **GitHub Actions** để hoàn tất luồng CI/CD, giúp việc deploy hoàn toàn tự động.
 
 #### Bước 5: Cấu hình IAM User và Lấy Access Key
 
 Để GitHub Actions có quyền đẩy code lên S3, ta cần tạo một tài khoản IAM chuyên dụng.
 
-1. Truy cập dịch vụ **IAM** trên AWS Console $\rightarrow$ chọn **Users** $\rightarrow$ nhấn **Create user**.
+1. Truy cập dịch vụ **IAM** trên AWS Console => chọn **Users** => nhấn **Create user**.
 2. Đặt tên user là `github-actions-bot`.
 
 <p align="center">
   <img src="/images/5-Workshop/img_A/31.png" width="850" />
   <br>
-  <i>Hình 5.4h: Khởi tạo IAM user mang tên github-actions-bot</i>
+  <i>Hình 5.4g: Khởi tạo IAM user mang tên github-actions-bot</i>
 </p>
 
 3. Tại bước _Set permissions_, chọn **Attach policies directly** và tìm gán chính sách `AmazonS3FullAccess`.
@@ -128,22 +122,16 @@ Việc Hosting tĩnh đã hoạt động tốt, và mã nguồn đã được đ
 <p align="center">
   <img src="/images/5-Workshop/img_A/32.png" width="850" />
   <br>
-  <i>Hình 5.4i: Cấp quyền AmazonS3FullAccess cho IAM user</i>
+  <i>Hình 5.4h: Cấp quyền AmazonS3FullAccess cho IAM user</i>
 </p>
 
-4. Hoàn tất tạo user, sau đó chọn user vừa tạo $\rightarrow$ tab **Security credentials** $\rightarrow$ nhấn **Create access key**.
+4. Hoàn tất tạo user, sau đó chọn user vừa tạo => tab **Security credentials** => nhấn **Create access key**.
 5. Chọn mục **Third-party service**, xác nhận điều khoản và lấy cặp **Access key** cùng **Secret access key**.
 
 <p align="center">
   <img src="/images/5-Workshop/img_A/34.png" width="850" />
   <br>
-  <i>Hình 5.4j: Lựa chọn use case để tạo Access Key cho dịch vụ bên thứ ba</i>
-</p>
-
-<p align="center">
-  <img src="/images/5-Workshop/img_A/35.png" width="850" />
-  <br>
-  <i>Hình 5.4k: Nhận cặp thông tin Access Key ID và Secret Access Key</i>
+  <i>Hình 5.4i: Lựa chọn use case để tạo Access Key cho dịch vụ bên thứ ba</i>
 </p>
 
 #### Bước 6: Cấu hình GitHub Secrets bảo mật
@@ -157,7 +145,7 @@ Việc Hosting tĩnh đã hoạt động tốt, và mã nguồn đã được đ
 <p align="center">
   <img src="/images/5-Workshop/img_A/36.png" width="850" />
   <br>
-  <i>Hình 5.4l: Thiết lập thành công các biến AWS Secrets trên kho lưu trữ GitHub</i>
+  <i>Hình 5.4j: Thiết lập thành công các biến AWS Secrets trên kho lưu trữ GitHub</i>
 </p>
 
 #### Bước 7: Cấu hình quy trình tự động hóa GitHub Actions (CI/CD)
@@ -195,27 +183,25 @@ jobs:
 <p align="center">
   <img src="/images/5-Workshop/img_A/37.png" width="850" />
   <br>
-  <i>Hình 5.4m: Nội dung tệp cấu hình main.yml của GitHub Actions</i>
+  <i>Hình 5.4k: Nội dung tệp cấu hình main.yml của GitHub Actions</i>
 </p>
 
 3. Nhấn **Commit changes** để lưu lại. Hệ thống GitHub Actions sẽ tự động kích hoạt tiến trình chạy.
-
 4. Chuyển sang tab **Actions** trên GitHub để theo dõi trạng thái triển khai. Khi xuất hiện dấu tích màu xanh (`Success`), quá trình tự động hóa GitOps đã hoàn tất thành công!
 
 <p align="center">
   <img src="/images/5-Workshop/img_A/38.png" width="850" />
   <br>
-  <i>Hình 5.4n: Tiến trình GitHub Actions chạy thành công (Success)</i>
+  <i>Hình 5.4l: Tiến trình GitHub Actions chạy thành công (Success)</i>
 </p>
 
-<p align="center">
-  <img src="/images/5-Workshop/img_A/39.png" width="850" />
-  <br>
-  <i>Hình 5.4o: Tổng quan lịch sử chạy các Workflow trên GitHub Actions</i>
-</p>
+{{% notice success %}}
+**Sức mạnh của CI/CD:**
+Thay vì triển khai thủ công qua giao diện AWS Console (ClickOps) nhiều rủi ro, hệ thống giờ đây đã hoàn toàn tự động hóa. Bất kỳ kỹ sư nào đẩy mã nguồn mới lên nhánh `main`, giao diện ứng dụng sẽ được cập nhật lên S3 trong chưa đầy 1 phút.
+{{% /notice %}}
 
 ---
 
-### Hoàn thành Workshop
+### Bước tiếp theo
 
-Xin chúc mừng! Bạn đã hoàn thành việc triển khai toàn bộ ứng dụng kiến trúc Serverless 3 tầng (3-Tier Serverless Architecture) trên nền tảng đám mây AWS kết hợp quy trình CI/CD tự động hóa với GitHub Actions.
+Việc triển khai ứng dụng kiến trúc Serverless 3 tầng (3-Tier) và luồng CI/CD tự động hóa đã hoàn thiện. Ở phần cuối cùng (**Mục 5.5**), chúng ta sẽ tiến hành dọn dẹp tài nguyên để tối ưu chi phí hạ tầng Cloud.

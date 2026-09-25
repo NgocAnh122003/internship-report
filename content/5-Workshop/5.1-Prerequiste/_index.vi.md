@@ -40,6 +40,25 @@ Trong phần này, chúng ta sẽ thiết lập các điều kiện cần thiế
   <i>Hình: Giao diện chọn Region trên AWS Console</i>
 </p>
 
+---
+
+### Bước 2: Thiết lập Quản trị Chi phí (AWS Budgets)
+
+Để đảm bảo hệ thống vận hành an toàn 100% trong giới hạn Free Tier và tránh các hóa đơn ngoài ý muốn, một cảnh báo ngân sách tự động cần được thiết lập ngay từ đầu.
+
+<p align="center">
+  <img src="/images/5-Workshop/img_A/49.png" width="800" />
+  <br>
+  <i>Hình: Thiết lập cảnh báo chi phí với AWS Budgets</i>
+</p>
+
+{{% notice info %}}
+**FinOps Best Practice:**
+Bất kỳ tài nguyên nào được tạo ra trong dự án này đều được giám sát chặt chẽ. Hệ thống AWS Budgets sẽ tự động gửi email cảnh báo tới quản trị viên nếu chi phí dự báo (Forecasted amount) của tài khoản vượt mức $100.
+{{% /notice %}}
+
+---
+
 ### Bước tiếp theo
 
-Sau khi đã thiết lập xong vùng làm việc, chúng ta sẽ chuyển sang **Mục 5.2** để tiến hành khởi tạo cơ sở dữ liệu NoSQL với **Amazon DynamoDB**.
+Sau khi đã thiết lập xong vùng làm việc và ngân sách an toàn, chúng ta sẽ chuyển sang **Mục 5.2** để tiến hành khởi tạo cơ sở dữ liệu NoSQL với **Amazon DynamoDB**.
