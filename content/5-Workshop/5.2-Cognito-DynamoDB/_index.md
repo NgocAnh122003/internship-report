@@ -35,7 +35,6 @@ Enter the exact technical specifications for the notes table as follows:
 - **Partition key**: `id` and set the data type to **String**. This key will store a unique identifier (UUID) for each generated note.
 - **Sort key**: Leave empty, as we are designing a simple table model.
 
-> [!NOTE]
 > **Technical Insight**: DynamoDB's NoSQL model means the system does not require pre-defining complex data columns. Using `id` as the Partition Key ensures read/write speeds remain at millisecond latency, even when the record count scales to millions.
 
 #### Step 3: Finalize and Create

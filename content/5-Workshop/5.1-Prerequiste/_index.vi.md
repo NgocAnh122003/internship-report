@@ -31,7 +31,6 @@ Trong phần này, chúng ta sẽ thiết lập các điều kiện cần thiế
    - **US East (N. Virginia) - us-east-1** (Khuyên dùng vì tính ổn định cao và cập nhật tính năng sớm nhất).
    - Hoặc **Asia Pacific (Singapore) - ap-southeast-1**.
 
-> [!IMPORTANT]
 > **Lưu ý quan trọng**: Bạn phải giữ nguyên một Region cố định trong suốt quá trình thực hiện workshop từ đầu đến cuối. Việc thay đổi Region giữa chừng sẽ làm mất liên kết giữa các tài nguyên như API Gateway, Lambda và DynamoDB.
 
 <p align="center">

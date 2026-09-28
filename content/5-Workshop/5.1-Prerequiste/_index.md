@@ -31,7 +31,6 @@ In this section, we will set up the necessary prerequisites and configure the in
    - **US East (N. Virginia) - us-east-1** (Recommended for high stability and early feature updates).
    - Or **Asia Pacific (Singapore) - ap-southeast-1**.
 
-> [!IMPORTANT]
 > **Important Note**: You must consistently use the same Region throughout this workshop. Changing Regions halfway will break the connections between resources like API Gateway, Lambda, and DynamoDB.
 
 <p align="center">

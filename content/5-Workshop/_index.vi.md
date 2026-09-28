@@ -12,8 +12,6 @@ pre: " <b> 5. </b> "
 
 Nội dung phần Workshop được cấu trúc thành các chương chính từ **5.1** đến **5.5** dưới đây để tái hiện lại toàn bộ quá trình xây dựng hệ thống:
 
-> [!NOTE]
->
 > - **Link Web Demo**: [http://cloud-note-app-ngocanh-2026.s3-website-us-east-1.amazonaws.com/](http://cloud-note-app-ngocanh-2026.s3-website-us-east-1.amazonaws.com/)
 > - **Link Source Code**: [https://github.com/NgocAnh122003/cloud-note-app](https://github.com/NgocAnh122003/cloud-note-app)
 

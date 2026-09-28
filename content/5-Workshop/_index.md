@@ -12,8 +12,6 @@ pre: " <b> 5. </b> "
 
 The Workshop modules are structured under main chapters **5.1** through **5.5** below to reconstruct the entire system architecture:
 
-> [!NOTE]
->
 > - **Live Web Demo Link**: [http://cloud-note-app-ngocanh-2026.s3-website-us-east-1.amazonaws.com/](http://cloud-note-app-ngocanh-2026.s3-website-us-east-1.amazonaws.com/)
 > - **Source Code Repository**: [https://github.com/NgocAnh122003/cloud-note-app](https://github.com/NgocAnh122003/cloud-note-app)
 
