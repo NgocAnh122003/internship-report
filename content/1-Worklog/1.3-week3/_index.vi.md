@@ -1,12 +1,12 @@
 ---
-title: "Worklog Tuần 4"
+title: "Worklog Tuần 3"
 date: 2026-08-16
-weight: 4
+weight: 3
 chapter: false
-pre: " <b> 1.4. </b> "
+pre: " <b> 1.3. </b> "
 ---
 
-### Mục tiêu tuần 4:
+### Mục tiêu tuần 3:
 
 - Tìm hiểu cơ chế mạng trên AWS (Networking) bao gồm VPC, Subnet và Internet Gateway.
 - Thực hành thiết lập VPC, Public/Private Subnet, Security Groups và Network ACLs.
@@ -22,7 +22,7 @@ pre: " <b> 1.4. </b> "
 | 5   | Thực hành kết nối EC2 trong VPC và kiểm tra truy cập Internet | 21/05/2026   | 21/05/2026      | <https://cloudjourney.awsstudygroup.com/> |
 | 6   | Tìm hiểu Elastic IP và Route Table trên AWS                   | 22/05/2026   | 22/05/2026      | <https://cloudjourney.awsstudygroup.com/> |
 
-### Kết quả đạt được tuần 4:
+### Kết quả đạt được tuần 3:
 
 - Nắm vững kiến thức mạng cơ bản trên AWS (VPC, Subnet, Route Table, IGW).
 - Thiết lập thành công hệ thống VPC với các phân vùng Public và Private Subnet bảo mật.
